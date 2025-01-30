@@ -1,6 +1,6 @@
 from typing import Literal
 from bitarray import bitarray
-from bitarray.util import int2ba, ba2int
+from bitarray.util import int2ba, ba2int, ba2hex
 from constants import *
 
 class KeyScheduler:
@@ -86,6 +86,8 @@ class DESCipher:
 
             left = next_left
             right = next_right
+
+            print(f"Round: {(i+1):02d}: {ba2hex(left + right)}")
         
         combined = right + left
         return _permute_bits(combined, IP_UNDO)
@@ -127,7 +129,7 @@ def _shift_bits(input: bitarray, num: int):
         output[-1] = first
     return output
 
-def _permute_bits(input, table):
+def _permute_bits(input: bitarray, table: list):
     output = bitarray()
     for i in table:
         output.append(input[i - 1])

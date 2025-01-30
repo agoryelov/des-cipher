@@ -33,11 +33,11 @@ def main():
 
     if args.operation == "encrypt":
         ciphertext = cipher.encrypt(input, key)
-        print(ba2hex(ciphertext))
+        print(f"\nCiphertext: {ba2hex(ciphertext)}")
     
     if args.operation == "decrypt":
         decrypted = cipher.decrypt(input, key)
-        print(ba2hex(decrypted))
+        print(f"\nDecrypt: {ba2hex(decrypted)}")
     
 
     # input_data = hex2ba('02468aceeca86420')
